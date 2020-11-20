@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knightacts Manager</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">	
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/md5.js"></script>        <!--hash file-->
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->  
+</head>    
+<body style =   "background-image: url('images/ucf2.jpg'),url('images/ucf2b.jpg'); 
+                 background-repeat: no-repeat, repeat-y;">
+
+    <h1 id="title">Knightacts Manager</h1>
+    <h2 id="inner-title">The Unofficial UCF Ultimate Contact Manager<br> Made by Knights for Knights</h2>
+
+    <div id="loginDiv">
+        <span id="welcome">Welcome Back Knight!</span><br>
+        <input type="text" id="loginName" placeholder="Enter your username" /><br />
+        <input type="password" id="loginPassword" placeholder="Enter your password"/><br />
+        <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Charge On! </button><br>
+        <span id="createAccount"><br>Don't have an account?</span><br>
+        <button type="button" id="signup" class="buttons" onclick="moveToSignUp();"> Sign Up Now </button>
+        <span id="loginResult"></span> <!--error field-->
+    </div>
+    
+</body>
+</html>

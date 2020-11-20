@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knightacts- New Contact</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">	
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end--> 
+</head>    
+<body>
+
+    <h1 id="title">Create New Knightact</h1>
+
+    <div class="container">
+        <div class="row">
+                <div class="col-left">
+                    <label for="firstname">First Name*</label></div>
+                <div class="col-right">
+                    <input type="text" id="firstNameText" placeholder="First Name"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="lastname">Last Name*</label></div>
+            <div class="col-right">
+                <input type="text" id="lastNameText" placeholder="Last Name"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="email">Email</label></div>
+            <div class="col-right">
+                <input type="text" id="emailContact" placeholder="Email"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="number">Phone Number</label></div>
+            <div class="col-right">
+                <input type="text" id="phoneNumber" placeholder="123-456-7890"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="address">Address</label></div>
+            <div class="col-right">
+                <input type="text" id="addressContact" placeholder="1234 NW 59th st."></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="notes">Notes</label></div>
+            <div class="col-right">
+                <textarea id="notesContact" placeholder=""></textarea></div>
+        </div>
+        <span id="required">*Required fields</span><br>
+    </div>
+    <span id="contactAddResult"></span>
+
+    <div id = "buttonDiv">
+        <div class="inner"><button type="button" id="backButton" class="buttons" onclick= "returnToContactPage()";> Back </button></div>
+        <div class="inner"><button type="button" id="okButton" class="buttons" onclick= "addContact()";> Charge On! </button></div>
+    </div>
+    
+</body>
+</html>

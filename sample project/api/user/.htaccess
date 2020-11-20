@@ -1,0 +1,5 @@
+RewriteEngine On
+	# Turn on the rewriting engine
+RewriteRule ^create create.php [NC,L]
+RewriteRule ^login login.php [NC,L]
+RewriteRule ^get/([0-9a-zA-Z_-]*)$ get.php?id=$1 [NC,L]

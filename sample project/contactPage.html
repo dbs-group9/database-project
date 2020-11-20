@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knightacts- My Contacts</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->
+
+</head>
+<body onload="getAllContacts();">
+    <h1 id="title">My Knightacts</h1>
+
+    <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> </button>
+
+    <!-- Black box with search and add -->
+    <div id="searchOrAdd">
+        <div class="row">
+            <div class="left">
+                <!--Perform add contact on click-->
+                <button type="button" id="addContact" class="buttons" onclick="goToAddContact();"> Add New Knightact </button><br />
+                <span id="contactAddResult"></span>
+            </div>
+            <div class="right">
+                <!--The search bar automatically updates with each character -->
+                <input type="text" id="searchBar" placeholder="Search..." oninput="searchContacts();"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Here is where the contacts will apprear as a list-->
+    <!-- Clicking them will take you to the edit contact page for that contact- autofilled info-->
+    <div class="container2">
+        <ul id="myUL">
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knightacts- Create an Account</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">	
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/md5.js"></script>        <!--hash file-->
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->    
+</head>    
+<body style =   "background-image: url('images/ucf2.jpg'),url('images/ucf2b.jpg'); 
+                 background-repeat: no-repeat, repeat-y;">
+
+    <h1 id="title">Create an Account</h1>
+    <h2 id="inner-title">U Can't Find your contacts <br> so let us store them for you!<br> </h2>
+
+    <div id="loginDiv">
+        <span id="welcome">Welcome New Knight!</span><br>
+        <input type="text" id="newUserName" placeholder="Create a username" /><br />
+        <input type="password" id="newPassword" placeholder="Create a password"/><br />
+        <button type="button" id="loginButton" class="buttons" onclick="doSignUp();"> Charge On! </button><br>
+        <span id="haveAccount"><br>Already have an account?</span><br>
+        <button type="button" id="signup" class="buttons" onclick= "returnToLogin()";> Log In </button>
+        <span id="signUpResult"></span> <!--error field--> 
+    </div>
+    
+</body>
+</html>
