@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Event</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="Javascript.js"></script> <!--back end-->
+</head>
+<body>
+
+    <h1 id="title">Create New Event</h1>
+
+    <div class="container">
+        <div class="row">
+                <div class="col-left">
+                    <label for="firstname">Event URL</label></div>
+                <div class="col-right">
+                    <input type="text" id="firstNameText" placeholder="Event URL"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="lastname">Event Title</label></div>
+            <div class="col-right">
+                <input type="text" id="lastNameText" placeholder="Event Title"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="email">Event Address</label></div>
+            <div class="col-right">
+                <input type="text" id="emailContact" placeholder="Event Address"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="number">Event start date</label></div>
+            <div class="col-right">
+                <input type="text" id="phoneNumber" placeholder="Event start date"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="address">Event end date</label></div>
+            <div class="col-right">
+                <input type="text" id="addressContact" placeholder="Event end date"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="notes">Event Description</label></div>
+            <div class="col-right">
+                <textarea id="notesContact" placeholder=""></textarea></div>
+        </div>
+        <span id="required">*Required fields</span><br>
+    </div>
+    <span id="contactAddResult"></span>
+
+    <div id = "buttonDiv">
+        <div class="inner"><button type="button" id="backButton" class="buttons" onclick= "returnToContactPage()";> Back </button></div>
+        <div class="inner"><button type="button" id="okButton" class="buttons" onclick= "addContact()";> Create </button></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knightacts- Edit Contact</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->
+</head>
+<body onload="loadEditPage();">
+
+    <h1 id="title">Edit Knightact</h1>
+
+    <div class="container">
+        <div class="row">
+                <div class="col-left">
+                    <label for="firstname">First Name*</label></div>
+                <div class="col-right">
+                    <input type="text" id="firstNameText" placeholder="Knightro"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="lastname">Last Name*</label></div>
+            <div class="col-right">
+                <input type="text" id="lastNameText" placeholder="Pegasus"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="email">Email</label></div>
+            <div class="col-right">
+                <input type="text" id="emailContact" placeholder="knightro@knights.ucf.edu"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="number">Phone Number</label></div>
+            <div class="col-right">
+                <input type="text" id="phoneNumber" placeholder="123-456-7890"></div>
+        </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="address">Address</label></div>
+            <div class="col-right">
+                <input type="text" id="addressContact" placeholder="1234 NW 59th st."></div>
+            </div>
+        <div class="row">
+            <div class="col-left">
+                <label for="notes">Notes</label></div>
+            <div class="col-right">
+                <textarea id="notesContact" placeholder="I love UCF!"></textarea></div>
+        </div>
+            <span id="required">*Required fields</span><br>
+    </div>
+    <span id="contactEditResult"></span>
+
+    <div id = "buttonDiv">
+        <div class="inner-2"><button type="button" id="backButton" class="buttons" onclick= "returnToContactPage()";> Back </button></div>
+        <div class="inner-2"><button type="button" id="saveButton" class="buttons" onclick= "editPage()";> Save </button></div>
+        <div class="inner-2"><button type="button" id="deleteButton" class="buttons" onclick= "deleteContact()";> Delete </button></div>
+    </div>
+</body>
+</html>
