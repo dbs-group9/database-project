@@ -5,16 +5,17 @@
 	/**
 	 * 		input: 
 	 * 		{
-	 * 			username: "test"
+	 * 			event_id: "1"
 	 * 		}
 	 * 
 	 * 		output:
 	 * 		{
-	 * 			user_type: "participant"
+	 * 			status: "1: approved"
 	 * 		}
 	 */
 	
-	$id = $inData["username"];
+    $id = $inData["event_id"];
+    
 
     $conn = new mysqli("localhost", "root", "", "exhibitioncenterdatabase");
     if ($conn->connect_error)
@@ -24,9 +25,10 @@
 
     else 
     {    
-        $sql = "SELECT user_type 
-		FROM users 
-		where users.username ='". $id ."'";
+        $sql = "UPDATE events 
+		SET is_approved = 1 
+        WHERE events.is_approved = 0 
+        AND events.event_id ='". $id ."'";
 		$result = $conn->query($sql);
 		
         if( $result != TRUE )
@@ -37,7 +39,7 @@
         else if ($result->num_rows > 0)
         {
 			$row = $result->fetch_assoc();
-			$id = $row["user_type"];
+			$id = $row["is_approved"];
             returnWithInfo($id);
             $conn->close();
 		}
@@ -51,7 +53,7 @@
 	
 	function returnWithInfo($id)
     {
-        $retValue = '{"user_type":"' . $id . '"}';
+        $retValue = '{"is_approved":"' . $id . '"}';
         sendResultInfoAsJson( $retValue );
     }
 

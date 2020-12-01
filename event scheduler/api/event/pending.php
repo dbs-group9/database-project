@@ -1,20 +1,7 @@
 <?php
 
-    $inData = getRequestInfo();
-	
-	/**
-	 * 		input: 
-	 * 		{
-	 * 			username: "test"
-	 * 		}
-	 * 
-	 * 		output:
-	 * 		{
-	 * 			user_type: "participant"
-	 * 		}
-	 */
-	
-	$id = $inData["username"];
+    // $inData = getRequestInfo();
+	$id = array();
 
     $conn = new mysqli("localhost", "root", "", "exhibitioncenterdatabase");
     if ($conn->connect_error)
@@ -24,21 +11,24 @@
 
     else 
     {    
-        $sql = "SELECT user_type 
-		FROM users 
-		where users.username ='". $id ."'";
+        $sql = "SELECT * 
+		FROM events 
+		where events.is_approved = 0";
 		$result = $conn->query($sql);
-		
+        
         if( $result != TRUE )
         {
             returnWithError($conn->error);
             $conn->close();
         }
+        
         else if ($result->num_rows > 0)
         {
-			$row = $result->fetch_assoc();
-			$id = $row["user_type"];
-            returnWithInfo($id);
+            while($row = mysqli_fetch_assoc($result)){
+			$id[] = $row;
+            // returnWithInfo($id);
+            }
+            echo json_encode($id);
             $conn->close();
 		}
 		
@@ -51,7 +41,7 @@
 	
 	function returnWithInfo($id)
     {
-        $retValue = '{"user_type":"' . $id . '"}';
+        $retValue = '{"title of event pending":"' . $id . '"}';
         sendResultInfoAsJson( $retValue );
     }
 
