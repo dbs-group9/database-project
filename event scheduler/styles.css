@@ -1,7 +1,7 @@
 
 body
 {
-    background-color: darkblue; /*back-up color if pictures don't load*/
+    background-color: white; /*back-up color if pictures don't load*/
     background-size: cover;
     margin: 0;
     padding: 0;
