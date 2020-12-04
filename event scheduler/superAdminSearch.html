@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Event Search Page</title>
+    <title>Super Admin Page</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
     <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->
 
 </head>
 <body onload="getAllContacts();"> <!-- CHANGE onload-->
-    <h1 id="title">Event Search</h1>
+    <h1 id="title">Super Admin Search</h1>
 
     <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> </button>  <!-- CHANGE onclick-->
 
     <!-- Black box with inputs and button-->
     <div id="searchEventBox">
         <ul class="list-group" style="orientation:landscape" >
-            <li class="list-group-item" style="text-align:center;">
-                <b style="color:white"> Start Date: </b>
-                <input type="date" id="eventDatePlacement" oninput="searchContacts();"/> <!-- CHANGE onclick-->
+            <li class="list-group-item" >
+                <input style="text-align: center;" type="text" placeholder="Enter Admin/User Name" id="AdminSearch" oninput="searchContacts();"/> <!-- CHANGE onclick-->
             </li>
-            <li class="list-group-item" style="text-align:center;">
-                <b style="color:white;padding-right:13.3px;"> End Date: </b>
-                <input type="date" id="eventDatePlacement" oninput="searchContacts();" /></br> <!-- CHANGE onclick-->
-            </li>
-
+          <li class="list-group-item" style="text-align: center;">
+            <input type="radio" id="radioButton"></input>
+            <b style="color:white">Admin</b>
+            <input type="radio" id="radioButton"></input>
+            <b style="color:white">User</b>
+          </li>
             <li class="list-group-item">
-                <button type="button" id="eventSearchBar" class="buttons" onclick="searchContacts();"> Search </button> <!-- CHANGE onclick-->
+                <button type="button" style="padding-left: 30px" id="eventSearchBar" class="buttons" onclick="searchContacts();"> Search </button> <!-- CHANGE onclick-->
                 <span id="contactAddResult"></span>
             </li>
         </div>

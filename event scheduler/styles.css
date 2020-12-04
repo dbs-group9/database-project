@@ -42,7 +42,6 @@ body
     text-align: center;
     color: white;
     background-color: black;
-    border-radius: 50px;
     border-color: goldenrod;
     outline: 0;
     height: 1.7em;
@@ -103,7 +102,7 @@ body
 
 input[type="text"], input[type="password"]
 {
-    border-radius: 25px;
+
     border-color: goldenrod;
     background-color: white;
     text-align: center;
@@ -117,7 +116,7 @@ input[type="text"], input[type="password"]
 
 #welcome /*for log in page*/
 {
-    border-radius: 20px;
+
     border-width: 50%;
     border-bottom: 1.3px solid goldenrod;
     border-top: 1.3px solid goldenrod;
@@ -209,7 +208,7 @@ input[type="text"], input[type="password"]
 {
     font-family: 'Varela Round', 'Calibri', Arial;
     font-size: 30px;
-    border-radius: .5em;
+
     margin: auto;
     width:80%;
     font-size: 30px;
@@ -217,7 +216,7 @@ input[type="text"], input[type="password"]
     padding : 15px;
     padding-left: 1%;
     box-shadow: 5px 10px 8px black;
-    border-radius: .5em .5em 0 0;
+
 }
 
 .inner /* for 2 buttons on same line*/
@@ -267,7 +266,7 @@ input[type="text"], input[type="password"]
     font-family: 'Varela Round', 'Calibri', Arial;
     width: 85%;
     border: 2px solid black;
-    border-radius: 4px;
+
     outline: 0;
     padding-left: 2%;
     margin-top: 4%;
@@ -284,7 +283,7 @@ input[type="text"], input[type="password"]
 .container /*The yellow add/edit contact box*/
 {
     font-family: 'Varela Round', 'Calibri', Arial;
-    border-radius: .5em;
+
     font-size: 25px;
     width: 50%;
     margin-top: 2%;
@@ -298,7 +297,7 @@ input[type="text"], input[type="password"]
 .container2 /*The list of events box*/
 {
     font-family: 'Varela Round', 'Calibri', Arial;
-    border-radius: 0 0 .5em 0.5em;
+
     font-size: 25px;
     width: 80%;
     margin-top: 2%;
@@ -389,7 +388,7 @@ label
     margin: auto;
     font-family: 'Varela Round', 'Calibri', Arial;
     font-size: 0.9em;
-    border-radius: 0.5em;
+
     background-color: black;
     border: 1px solid white;
     color: white;
