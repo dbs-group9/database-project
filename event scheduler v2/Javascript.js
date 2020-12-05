@@ -542,16 +542,15 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 
 	for(let i = 0; i < titles.length; i++){
 		var item = document.createElement('li');
-		item.setAttribute("id", titles[i]);
-		item.setAttribute("data-title", citys[i]); // Represents City for filter
-		console.log(dates[i]);
-		console.log(endDates[i]);
-		item.setAttribute("text", dates[i]); // Represents Start Date for filter
-		item.setAttribute("value", endDates[i]); // Represents End Date for filter
+
 		// console.log(titles[i]);
 
 		if(searchBox) {
 			item.setAttribute("class", "event-search");
+			item.setAttribute("id", titles[i]);
+			item.setAttribute("data-title", citys[i]); // Represents City for filter
+			item.setAttribute("text", dates[i]); // Represents Start Date for filter
+			item.setAttribute("value", endDates[i]); // Represents End Date for filter
 		} else {
 			item.setAttribute("class", "event-list");
 		}
