@@ -673,11 +673,16 @@ function sortByCity() {
 			temp.setAttribute('style','display:none');
 		}});
 	if (!isFound) {
-		alert("No city was found under that name");
-		[].slice.call(event_list).forEach(function(temp) {
-			temp.setAttribute('style','display:flex');
-		});
+		showAllEvents();
 	}
+	document.getElementById('fname').value = "";
+}
+
+function showAllEvents() {
+	var event_list = document.querySelectorAll('.event-search');
+	[].slice.call(event_list).forEach(function(temp) {
+		temp.setAttribute('style','display:flex');
+	});
 }
 
 window.onload = function() {
