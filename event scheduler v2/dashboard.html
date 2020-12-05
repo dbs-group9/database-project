@@ -10,38 +10,38 @@
         <button class="btn" onclick=theLogout()>
             LOGOUT
         </button>
-    </div> 
+    </div>
 
 </head>
 
 <body>
-    
+
     <div class="mainContents">
-        <div class="topBox"> 
+        <div class="topBox">
             <h1>Events Available</h1>
             <div id="myBtnContainer">
                 <button id='button1' class="btn active" onclick="filterSelection('all')"> Events Available</button>
-                <button id='button2' class="btn" onclick="filterSelection('By City')"> By City</button>
+                <button id='button2' class="btn" onclick="sortByCity()"> By City</button>
                 <button id='button3' class="btn" onclick="filterSelection('By Date')"> By Date</button>
             </div>
             <input placeholder="City:" type="text" id="fname" name="fname">
             <p id="eventResult"></p>
             <p id="availableEvents"></p>
-    
+
         </div>
-    
-        <div class="bottomBox"> 
-            <div class="leftBottom"> 
+
+        <div class="bottomBox">
+            <div class="leftBottom">
                 <h1>Events Attending</h1>
                 <p id="enrolled" class='tester'></p>
             </div>
         </div>
 
 
-        <div class="bottomBox"> 
-            <div class="rightBottom"> 
+        <div class="bottomBox">
+            <div class="rightBottom">
                 <h1>Events Created</h1>
-                <button id='button4' class="btn" onclick=displayCreateForm()> 
+                <button id='button4' class="btn" onclick=displayCreateForm()>
                     Create An Event
                 </button>
                 <div id="creationArea" style="display: none;">
@@ -55,7 +55,7 @@
 
                         <label for="eurl">URL:</label><br>
                         <input type="text" id="eurl" name="eurl"><br><br>
-                        
+
                         <label for="esd">Start Date:</label><br>
                         <input type="text" id="esd" name="esd"><br><br>
 
@@ -69,13 +69,13 @@
                         <input type="text" id="ecity" name="ecity"><br><br>
 
                         <input type="submit" value="Submit">
-                      </form> 
+                      </form>
                 </div>
                 <p id="newevents"></p>
             </div>
         </div>
     </div>
-    
+
 
 
 </body>

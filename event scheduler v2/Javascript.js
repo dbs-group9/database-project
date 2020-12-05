@@ -1,5 +1,5 @@
 // var urlBase = 'http://knightacts.ueuo.com'; //http://vh1/api/event/eventsApproved.php
-var urlBase = 'http://vh1/api/event/'; 
+var urlBase = 'http://vh1/api/event/';
 var extension = 'php';
 
 var userId = 0;
@@ -103,7 +103,7 @@ function doLogin()
 
 		saveCookie();
 		window.location.href = "dashboard.html";
-	
+
 	}
 	catch(err)
 	{
@@ -529,7 +529,7 @@ function hideAllContacts()
 }
 
 function renderEvents(titles, descriptions, urls, dates, endDates, addresses, citys, eventIds, button){
-	
+
 	if (descriptions == null){
 		var list = document.createElement('ul');
 		list.setAttribute("class", 'eventsCreated');
@@ -537,53 +537,55 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 		var list = document.createElement('ul');
 	}
 
-	
-	
+
+
 	for(let i = 0; i < titles.length; i++){
 		var item = document.createElement('li');
 		item.setAttribute("id", titles[i]);
+		item.setAttribute("class", "event-list");
+		item.setAttribute("data-title", citys[i]);
 		// console.log(titles[i]);
 
 		for(let j = 0; j < 1; j++){
-			
+
 			var title = document.createElement('p');
-			var t = document.createTextNode(titles[i]); 
+			var t = document.createTextNode(titles[i]);
 			title.appendChild(t);
 
 			if (descriptions != null){
 				var description = document.createElement('p');
-				var t = document.createTextNode(descriptions[i]); 
+				var t = document.createTextNode(descriptions[i]);
 				description.appendChild(t);
 			}
-			
+
 			var url = document.createElement('p');
-			var t = document.createTextNode(urls[i]); 
+			var t = document.createTextNode(urls[i]);
 			url.appendChild(t);
 
 			if (descriptions != null){
 				var date = document.createElement('p');
-				var t = document.createTextNode(dates[i]); 
+				var t = document.createTextNode(dates[i]);
 				date.appendChild(t);
 
 				var endDate = document.createElement('p');
-				var t = document.createTextNode(endDates[i]); 
+				var t = document.createTextNode(endDates[i]);
 				endDate.appendChild(t);
 
 				var address = document.createElement('p');
-				var t = document.createTextNode(addresses[i]); 
+				var t = document.createTextNode(addresses[i]);
 				address.appendChild(t);
 
 				var city = document.createElement('p');
-				var t = document.createTextNode(citys[i]); 
+				var t = document.createTextNode(citys[i]);
 				city.appendChild(t);
 			}
 
-			if (button == 1){	
+			if (button == 1){
 				var button1 = document.createElement('button');
 				button1.textContent = "Enroll";
 				button1.setAttribute("onclick", "enroll('" + titles[i] + "', '" + descriptions[i] + "', '" + urls[i] + "', '"  + dates[i] + "', '" + endDates[i] + "' , '" + addresses[i] + "', '" + citys[i] + "', '" + eventIds[i] + "')");
 			}
-			
+
 			// var button2 = document.createElement('button');
 			// button2.textContent = "Info";
 			// button2.setAttribute("onclick", "alert('get info')");
@@ -601,17 +603,17 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 			item.appendChild(endDate);
 		}
 
-		if (button == 1){	
+		if (button == 1){
 			item.appendChild(button1);
 		}
-		
+
 		// item.appendChild(button2);
 
 		list.appendChild(item);
 
 	}
 
-	
+
 
 	return list;
 }
@@ -650,6 +652,16 @@ function enroll(title, description, url, startdate, enddate, address, city, even
 	}
 }
 
+function sortByCity() {
+  var event_list = document.querySelectorAll('.event-list');
+
+	[].slice.call(event_list).sort(function(x, y) {
+    var fstEvent = x.getAttribute('data-title').toLowerCase()
+    var sndEvent = y.getAttribute('data-title').toLowerCase()
+    return (fstEvent < sndEvent) ? -1 : (fstEvent > sndEvent) ? 1 : 0;
+	}).forEach(function(temp) {temp.parentNode.appendChild(temp)});
+}
+
 window.onload = function() {
 
 	if(window.location.pathname == "/dashboard.html"){
@@ -679,7 +691,7 @@ window.onload = function() {
 			var is_approved = [];
 			var username = [];
 			var city = [];
-			
+
 			for (let i = 0; i < jsonObject.length; i++){
 
 				event_id[i] = jsonObject[i]['event_id'];
@@ -697,13 +709,13 @@ window.onload = function() {
 			// send these events to be rendered
 			// titles, descriptions, urls, dates, endDates, addresses, citys, eventIds
 			document.getElementById('availableEvents').appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 1));
-			
-			
+
+
 		} catch (err){
 			console.log(err);
 			var jsonObject = JSON.parse( xhr.responseText );
 		}
-		
+
 		// get events attending
 		var jsonPayload = '{"username" : "' + sessionStorage.getItem("userId") + '"}';
 		console.log(jsonPayload);
@@ -716,7 +728,7 @@ window.onload = function() {
 
 		try {
 			xhr.send(jsonPayload);
-			
+
 			var jsonObject = JSON.parse( xhr.responseText );
 			// console.log(jsonObject);
 
@@ -730,7 +742,7 @@ window.onload = function() {
 			var is_approved = [];
 			var username = [];
 			var city = [];
-			
+
 			for (let i = 0; i < jsonObject.length; i++){
 
 				event_id[i] = jsonObject[i]['event_id'];
@@ -748,7 +760,7 @@ window.onload = function() {
 
 			document.getElementById("enrolled").appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 0));
 
-			
+
 		} catch (err) {
 			console.log(err);
 		}
@@ -790,8 +802,8 @@ function displayCreateForm(){
 
 	if(document.getElementById("creationArea").style.display == 'flex')
 		document.getElementById("creationArea").style.display = "none";
-		
-	else if(document.getElementById("creationArea").style.display == 'none') 
+
+	else if(document.getElementById("creationArea").style.display == 'none')
 		document.getElementById("creationArea").style.display = 'flex';
 }
 
@@ -817,7 +829,7 @@ function createEvent(){
 
 	try {
 		// console.log(jsonPayload);
-		xhr.send(jsonPayload);		
+		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse( xhr.responseText );
 
 		title = document.getElementById("etitle").value = "";
@@ -827,7 +839,7 @@ function createEvent(){
 		enddate = document.getElementById("eed").value = "";
 		address = document.getElementById("eadd").value = "";
 		city = document.getElementById("ecity").value = "";
-		
+
 		displayCreateForm();
 
 	} catch (error) {
@@ -840,5 +852,3 @@ function theLogout(){
 	sessionStorage.clear();
 	window.location.href = "index.html";
 }
-
-
