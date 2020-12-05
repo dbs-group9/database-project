@@ -544,7 +544,10 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 		var item = document.createElement('li');
 		item.setAttribute("id", titles[i]);
 		item.setAttribute("data-title", citys[i]); // Represents City for filter
-		item.setAttribute("text", citys[i]); // Represents Date for filter
+		console.log(dates[i]);
+		console.log(endDates[i]);
+		item.setAttribute("text", dates[i]); // Represents Start Date for filter
+		item.setAttribute("value", endDates[i]); // Represents End Date for filter
 		// console.log(titles[i]);
 
 		if(searchBox) {
@@ -553,50 +556,48 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 			item.setAttribute("class", "event-list");
 		}
 
-		for(let j = 0; j < 1; j++){
+		var title = document.createElement('p');
+		var t = document.createTextNode(titles[i]);
+		title.appendChild(t);
 
-			var title = document.createElement('p');
-			var t = document.createTextNode(titles[i]);
-			title.appendChild(t);
+		if (descriptions != null){
+			var description = document.createElement('p');
+			var t = document.createTextNode(descriptions[i]);
+			description.appendChild(t);
+		}
 
-			if (descriptions != null){
-				var description = document.createElement('p');
-				var t = document.createTextNode(descriptions[i]);
-				description.appendChild(t);
-			}
+		var url = document.createElement('p');
+		var t = document.createTextNode(urls[i]);
+		url.appendChild(t);
 
-			var url = document.createElement('p');
-			var t = document.createTextNode(urls[i]);
-			url.appendChild(t);
+		if (descriptions != null){
+			var date = document.createElement('p');
+			var t = document.createTextNode(dates[i]);
+			date.appendChild(t);
 
-			if (descriptions != null){
-				var date = document.createElement('p');
-				var t = document.createTextNode(dates[i]);
-				date.appendChild(t);
+			var endDate = document.createElement('p');
+			var t = document.createTextNode(endDates[i]);
+			endDate.appendChild(t);
 
-				var endDate = document.createElement('p');
-				var t = document.createTextNode(endDates[i]);
-				endDate.appendChild(t);
+			var address = document.createElement('p');
+			var t = document.createTextNode(addresses[i]);
+			address.appendChild(t);
 
-				var address = document.createElement('p');
-				var t = document.createTextNode(addresses[i]);
-				address.appendChild(t);
+			var city = document.createElement('p');
+			var t = document.createTextNode(citys[i]);
+			city.appendChild(t);
+		}
 
-				var city = document.createElement('p');
-				var t = document.createTextNode(citys[i]);
-				city.appendChild(t);
-			}
-
-			if (button == 1){
-				var button1 = document.createElement('button');
-				button1.textContent = "Enroll";
-				button1.setAttribute("onclick", "enroll('" + titles[i] + "', '" + descriptions[i] + "', '" + urls[i] + "', '"  + dates[i] + "', '" + endDates[i] + "' , '" + addresses[i] + "', '" + citys[i] + "', '" + eventIds[i] + "')");
-			}
+		if (button == 1){
+			var button1 = document.createElement('button');
+			button1.textContent = "Enroll";
+			button1.setAttribute("onclick", "enroll('" + titles[i] + "', '" + descriptions[i] + "', '" + urls[i] + "', '"  + dates[i] + "', '" + endDates[i] + "' , '" + addresses[i] + "', '" + citys[i] + "', '" + eventIds[i] + "')");
+		}
 
 			// var button2 = document.createElement('button');
 			// button2.textContent = "Info";
 			// button2.setAttribute("onclick", "alert('get info')");
-		}
+
 		item.appendChild(title);
 
 		if (descriptions != null){
@@ -661,21 +662,46 @@ function enroll(title, description, url, startdate, enddate, address, city, even
 
 function sortByCity() {
 	filter = document.getElementById('fname').value;
-	var currentBox = document.getElementById('availableEvents');
 	var event_list = document.querySelectorAll('.event-search');
 	var isFound = 0;
 	[].slice.call(event_list).forEach(function(temp) {
 		if (temp.getAttribute('data-title').toLowerCase() == filter.toLowerCase()) {
 			temp.parentNode.appendChild(temp);
-			isFound = 1;}
-		else {
+			isFound = 1;
+		} else {
 			temp.parentNode.appendChild(temp);
 			temp.setAttribute('style','display:none');
-		}});
+		}
+	});
 	if (!isFound) {
 		showAllEvents();
 	}
 	document.getElementById('fname').value = "";
+}
+
+function sortByDate() {
+	sDate = document.getElementById('sDate').value;
+	eDate = document.getElementById('eDate').value;
+
+	var event_list = document.querySelectorAll('.event-search');
+	var isFound = 0;
+	[].slice.call(event_list).forEach(function(temp) {
+		var tempStartDate = temp.getAttribute('text');
+		var tempEndDate = temp.getAttribute('value');
+		if (tempStartDate >= sDate && tempEndDate <= eDate) {
+			temp.parentNode.appendChild(temp);
+			isFound = 1;
+		} else {
+			temp.parentNode.appendChild(temp);
+			temp.setAttribute('style','display:none');
+		}
+	});
+	if (!isFound) {
+		showAllEvents();
+	}
+
+	document.getElementById('sDate').value = "";
+	document.getElementById('eDate').value = "";
 }
 
 function showAllEvents() {

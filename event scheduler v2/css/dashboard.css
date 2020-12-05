@@ -3,6 +3,10 @@ body{
     background-color:powderblue;
 }
 
+input[type="text"]::placeholder {
+  text-align: center;
+}
+
 .logoutRow{
     display: flex;
     justify-content: flex-start;
@@ -26,7 +30,7 @@ body{
     /* justify-content: center; */
     align-items: center;
     width: 80%;
-    height: 450px;
+    height: 498px;
 }
 
 .topBox > p {
@@ -137,7 +141,7 @@ li {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+
     width: 100%;
 }
 

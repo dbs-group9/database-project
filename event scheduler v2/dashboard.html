@@ -22,9 +22,14 @@
             <div id="myBtnContainer">
                 <button id='button1' class="btn active" onclick="showAllEvents()"> Events Available</button>
                 <button id='button2' class="btn" onclick="sortByCity()"> By City</button>
-                <button id='button3' class="btn" onclick="filterSelection('By Date')"> By Date</button>
+                <button id='button3' class="btn" onclick="sortByDate()"> By Date</button>
             </div>
-            <input placeholder="City:" type="text" id="fname" name="fname">
+            <input placeholder="City" type="text" id="fname" name="fname">
+            <br>
+            <div id="DateSearch">
+              <input placeholder="Start Date" type="text" id="sDate" name="sDate">
+              <input placeholder="End Date" type="text" id="eDate" name="eDate">
+            </div>
             <p id="eventResult"></p>
             <p id="availableEvents"></p>
 
