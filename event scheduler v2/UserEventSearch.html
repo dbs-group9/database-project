@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Search Page</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
+    <script type="text/javascript" src="js/Javascript.js"></script> <!--back end-->
+
+</head>
+<body onload="getAllContacts();"> <!-- CHANGE onload-->
+    <h1 id="title">Event Search</h1>
+
+    <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> </button>  <!-- CHANGE onclick-->
+
+    <!-- Black box with inputs and button-->
+    <div id="searchEventBox">
+        <ul class="list-group" style="orientation:landscape" >
+            <li class="list-group-item">
+                <b style="color:white"> Start Date: </b>
+                <input type="date" id="eventDatePlacement" oninput="searchContacts();"/> <!-- CHANGE onclick-->
+            </li>
+            <li class="list-group-item">
+                <b style="color:white;padding-right:13.3px;"> End Date: </b>
+                <input type="date" id="eventDatePlacement" oninput="searchContacts();"/></br> <!-- CHANGE onclick-->
+            </li>
+
+            <li class="list-group-item">
+                <button type="button" id="eventSearchBar" class="buttons" onclick="searchContacts();"> Search </button> <!-- CHANGE onclick-->
+                <span id="contactAddResult"></span>
+            </li>
+        </div>
+    </div>
+
+    <!-- Here is where the contacts will apprear as a list-->
+    <!-- Clicking them will take you to the edit contact page for that contact- autofilled info-->
+    <div class="container2">
+        <ul id="myUL">
+        </ul>
+    </div>
+
+</body>
+</html>

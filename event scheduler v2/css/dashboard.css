@@ -1,0 +1,175 @@
+
+body{
+    background-color:powderblue;
+}
+
+.logoutRow{
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px;
+}
+
+.mainContents{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 1000px;
+}
+
+.topBox{
+    /* border: 1px solid red; */
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 80%;
+    height: 450px;
+}
+
+.topBox > p {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+.bottomBox{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    height: auto;
+}
+
+.leftBottom > li{
+    margin-right: 100px;
+}
+
+.leftBottom > ul{
+    margin: 0px;
+}
+
+.tester{
+    display: flex;
+    flex-direction: column;
+    /* color:red; */
+    width: 80%;
+}
+
+.tester > ul{
+    display: flex;
+    flex-direction: column;
+    /* color:red; */
+    width: 95.8%;
+}
+
+
+.leftBottom{
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+
+}
+
+.leftBottom > p {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+.rightBottom{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    align-items: center;
+    width: 35%;
+    width: 100%;
+}
+
+.rightBottom > p {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+    .btn:hover {
+    background-color: #ddd;
+}
+
+    .btn.active {
+    background-color: #666;
+    color: white;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 234px;
+    overflow: auto;
+}
+
+
+
+li {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+}
+
+li > button  {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    width: 10%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+li > button:hover {
+    background-color: #ddd;
+}
+
+li > button.active {
+    background-color: #666;
+    color: white;
+}
+
+input {
+    margin-top: 10px;
+    width: 200px;
+}
+
+.eventsCreated > li{
+    display: flex;
+    justify-content: space-around;
+}
