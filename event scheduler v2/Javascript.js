@@ -528,7 +528,8 @@ function hideAllContacts()
     }
 }
 
-function renderEvents(titles, descriptions, urls, dates, endDates, addresses, citys, eventIds, button){
+// Adding searchBox as BOOL for focusing lists only in main box
+function renderEvents(titles, descriptions, urls, dates, endDates, addresses, citys, eventIds, button, searchBox){
 
 	if (descriptions == null){
 		var list = document.createElement('ul');
@@ -542,9 +543,15 @@ function renderEvents(titles, descriptions, urls, dates, endDates, addresses, ci
 	for(let i = 0; i < titles.length; i++){
 		var item = document.createElement('li');
 		item.setAttribute("id", titles[i]);
-		item.setAttribute("class", "event-list");
-		item.setAttribute("data-title", citys[i]);
+		item.setAttribute("data-title", citys[i]); // Represents City for filter
+		item.setAttribute("text", citys[i]); // Represents Date for filter
 		// console.log(titles[i]);
+
+		if(searchBox) {
+			item.setAttribute("class", "event-search");
+		} else {
+			item.setAttribute("class", "event-list");
+		}
 
 		for(let j = 0; j < 1; j++){
 
@@ -641,7 +648,7 @@ function enroll(title, description, url, startdate, enddate, address, city, even
 		document.getElementById("eventResult").style = "color: red;";
 
 
-		// document.getElementById('enrolled').appendChild(renderEvents([title], [description], [url], [startdate], [enddate], [address], [city], [event_id], 0));
+		// document.getElementById('enrolled').appendChild(renderEvents([title], [description], [url], [startdate], [enddate], [address], [city], [event_id], 0, 0));
 		location.reload();
 
 
@@ -653,13 +660,24 @@ function enroll(title, description, url, startdate, enddate, address, city, even
 }
 
 function sortByCity() {
-  var event_list = document.querySelectorAll('.event-list');
-
-	[].slice.call(event_list).sort(function(x, y) {
-    var fstEvent = x.getAttribute('data-title').toLowerCase()
-    var sndEvent = y.getAttribute('data-title').toLowerCase()
-    return (fstEvent < sndEvent) ? -1 : (fstEvent > sndEvent) ? 1 : 0;
-	}).forEach(function(temp) {temp.parentNode.appendChild(temp)});
+	filter = document.getElementById('fname').value;
+	var currentBox = document.getElementById('availableEvents');
+	var event_list = document.querySelectorAll('.event-search');
+	var isFound = 0;
+	[].slice.call(event_list).forEach(function(temp) {
+		if (temp.getAttribute('data-title').toLowerCase() == filter.toLowerCase()) {
+			temp.parentNode.appendChild(temp);
+			isFound = 1;}
+		else {
+			temp.parentNode.appendChild(temp);
+			temp.setAttribute('style','display:none');
+		}});
+	if (!isFound) {
+		alert("No city was found under that name");
+		[].slice.call(event_list).forEach(function(temp) {
+			temp.setAttribute('style','display:flex');
+		});
+	}
 }
 
 window.onload = function() {
@@ -708,7 +726,7 @@ window.onload = function() {
 
 			// send these events to be rendered
 			// titles, descriptions, urls, dates, endDates, addresses, citys, eventIds
-			document.getElementById('availableEvents').appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 1));
+			document.getElementById('availableEvents').appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 1, 1));
 
 
 		} catch (err){
@@ -758,7 +776,7 @@ window.onload = function() {
 			}
 			// console.log(title);
 
-			document.getElementById("enrolled").appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 0));
+			document.getElementById("enrolled").appendChild(renderEvents(title, description, url, startdate, enddate, address, city, event_id, 0, 0));
 
 
 		} catch (err) {
@@ -789,7 +807,7 @@ window.onload = function() {
 				url[i] = jsonObject[i]['url'];
 			}
 
-			document.getElementById("newevents").appendChild(renderEvents(title, null, url, null, null, null, null, null, 0));
+			document.getElementById("newevents").appendChild(renderEvents(title, null, url, null, null, null, null, null, 0, 0));
 
 		} catch (err) {
 			console.log(err);
