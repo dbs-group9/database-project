@@ -1,5 +1,5 @@
 // var urlBase = 'http://knightacts.ueuo.com'; //http://vh1/api/event/eventsApproved.php
-var urlBase = 'http://vh1/api/event/';
+var urlBase = '/api/event/';
 var extension = 'php';
 
 var userId = 0;
@@ -24,7 +24,7 @@ function doSignUp()
 
 	document.getElementById("signUpResult").innerHTML = "";
 	var jsonPayload = '{"username" : "' + userName + '", "password" : "' + password + '"}';
-	var url = "http://vh1/api/user/create.php";
+	var url = "http://eventscheduler/api/user/create.php";
 	var xhr = new XMLHttpRequest();
 	// edit path to create.php if necessary
 	xhr.open("POST", url, false);
@@ -65,6 +65,106 @@ function doSignUp()
 	}
 }
 
+function getAdminEvents(){
+	document.getElementById("eventResult").innerHTML = "";
+	document.getElementById("eventsOrganized").innerHTML = "";
+	var username = document.getElementById("uname").value;
+	if(!username || username.length === 0){
+		document.getElementById("eventResult").innerHTML = "Please enter a username.";
+		return;
+	}
+	
+	var jsonPayload = '{"username" : "'+ username + '"}';
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/api/event/createdByUser.php", false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.withCredentials = false;
+
+	try{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+		if(jsonObject.error){
+			document.getElementById("eventResult").innerHTML = "User could not be found.";
+			return;
+		}
+		console.log(jsonObject);
+		
+		var col = ["Title", "Description", "URL", "StartDate", "EndDate", "Address", "Username", "City"];
+		var table = document.createElement("table");
+		var tableRow = table.insertRow(-1);
+
+		for(var i = 0; i < col.length; i++){
+			var tc = document.createElement("th");
+			tc.innerHTML = col[i];
+			tableRow.appendChild(tc);
+		}
+		for(var i = 0; i < jsonObject.length; i++){
+			tableRow = table.insertRow(-1);
+			for(var j = 0; j < col.length; j++){
+				var tc = tableRow.insertCell(-1);
+				tc.innerHTML = jsonObject[i][col[j].toLowerCase()];
+			}
+		}
+		document.getElementById("eventsOrganized").innerHTML = "";
+		document.getElementById("eventsOrganized").appendChild(table);
+	} 
+	catch(err){
+		document.getElementById("eventResult").innerHTML = err;
+		document.getElementById("eventResult").style = "color: red;";
+		console.log(err);
+	}
+}
+function getUserEvents(){
+	document.getElementById("userEvent").innerHTML = "";
+	document.getElementById("eventAttendance").innerHTML = "";
+	var username = document.getElementById("username").value;
+	if(!username || username.length === 0){
+		document.getElementById("eventAttendance").innerHTML = "Please enter a username.";
+		return;
+	}
+	
+	var jsonPayload = '{"username" : "'+ username + '"}';
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/api/enrollment/userEnrollments.php", false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.withCredentials = false;
+	
+	try{
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse(xhr.responseText);
+		if(jsonObject.length == 0){
+			document.getElementById("eventAttendance").innerHTML = "User could not be found.";
+			return;
+		}
+		console.log(jsonObject);
+		
+		var col = ["Username","Title"];
+		var table = document.createElement("table");
+		var tableRow = table.insertRow(-1);
+
+		for(var i = 0; i < col.length; i++){
+			var colName = document.createElement("th");
+			colName.innerHTML = col[i];
+			tableRow.appendChild(colName);
+		}
+		for(var i = 0; i < jsonObject.length; i++){
+			tableRow = table.insertRow(-1);
+			for(var j = 0; j < col.length; j++){
+				var tc = tableRow.insertCell(-1);
+				tc.innerHTML = jsonObject[i][col[j].toLowerCase()];
+			}
+		}
+		document.getElementById("userEvent").innerHTML = "";
+		document.getElementById("userEvent").appendChild(table);
+	}
+	catch (err){
+		document.getElementById("eventAttendance").innerHTML = err;
+		document.getElementById("eventAttendance").style = "color: red;";
+		console.log(err);
+	}
+
+
+}
 // Logs existing user into account.
 function doLogin()
 {
