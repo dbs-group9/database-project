@@ -2,6 +2,11 @@ input[type="text"]::placeholder {
   text-align: center;
 }
 
+input[class="text-center"] { -webkit-text-security: none; }
+input[class="text-center"] { -webkit-text-security: circle; }
+input[class="text-center"] { -webkit-text-security: square; }
+input[class="text-center"] { -webkit-text-security: disc;}
+
 .buttons:hover {
   background-color: #D6CED2;
   color: black;
