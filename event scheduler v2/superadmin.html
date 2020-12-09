@@ -29,24 +29,24 @@ List the events (the event titles) a particular user has participated -->
                 </div>
                 <input placeholder="User" type="text" id="uname" name="fname">
                 <br>
-                <p id="eventResult"></p>
+                <p id="eventResult" style="padding-right:264px;word-spacing: 130px;">Title StartDate  Description  URL Address City EndDate          </p>
                 <p id="eventsOrganized"></p>
-            </div>    
+            </div>
         </div>
 
 
-        <div class="bottomBox">
-            <div class="rightBottom">
-              <h1>Events Attended</h1>
-              <div id="myBtnContainer">
-                  <button id='button2' class="btn" onclick="getUserEvents()"> By User</button>
-              </div>
-              <input placeholder="User" type="text" id="username" name="fname">
-              <br>
-              <p class = eventAttendance id="eventAttendance"></p>
-              <p class = "userEvent" id="userEvent"></p>
+      <div class="bottomBox">
+          <div class="rightBottom">
+            <h1>Events Attended</h1>
+            <div id="myBtnContainer">
+                <button id='button2' class="btn" onclick="getUserEvents()"> By User</button>
             </div>
-        </div>  
-    </div>
+            <input placeholder="User" type="text" id="username" name="fname">
+            <br>
+            <p class = eventAttendance id="eventAttendance" style="padding-right:264px;word-spacing: 130px;">Title StartDate  Description  URL Address City EndDate          </p>
+            <p class = "userEvent" id = "userEvent"></p>
+          </div>
+      </div>
+  </div>
 </body>
 </html>
