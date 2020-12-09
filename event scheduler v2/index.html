@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Exhibition Center Event Manager</title>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="./css/index.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
     <script type="text/javascript" src="md5.js"></script>        <!--hash file-->
     <script type="text/javascript" src="Javascript.js"></script> <!--back end-->
@@ -12,12 +12,14 @@
 
     <h1 id="title">Event Manager</h1>
     <div id="loginDiv">
-        <span id="welcome">Welcome Back!</span><br>
+        <span id="welcome" style="text-align:center; margin-left:50px;">Welcome!</span><br>
         <input type="text" id="loginName" placeholder="Enter your username" /><br />
-        <input type="password" id="loginPassword" placeholder="Enter your password"/><br />
-        <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Login </button><br>
-        <span id="createAccount"><br>Don't have an account?</span><br>
-        <button type="button" id="signup" class="buttons" onclick="moveToSignUp();"> Sign Up Now </button>
+        <input type="text" id="loginPassword" placeholder="Enter your password"/><br />
+        <button type="button" id="loginButton" class="buttons" style="margin-left:60px" onclick="doLogin();"> Login </button><br>
+        <br>
+        <span id="createAccount" style="text-align:center; margin-left:17px;">Don't have an account?</span>
+        <br>
+        <button type="button" id="signup" class="buttons" style="margin-left:40px" onclick="moveToSignUp();"> Sign Up Now </button>
         <span id="loginResult"></span> <!--error field-->
     </div>
 

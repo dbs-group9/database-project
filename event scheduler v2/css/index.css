@@ -1,0 +1,17 @@
+input[type="text"]::placeholder {
+  text-align: center;
+}
+
+.buttons:hover {
+  background-color: #D6CED2;
+  color: black;
+}
+
+
+
+body {
+  position: fixed; /* or absolute */
+  top: 36%;
+  left: 45%;
+  transform: scale(1.8);
+}

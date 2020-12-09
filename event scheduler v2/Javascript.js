@@ -773,6 +773,7 @@ function sortByCity() {
 		}
 	});
 	if (!isFound) {
+		alert("No city under that name found");
 		showAllEvents();
 	}
 	document.getElementById('fname').value = "";
