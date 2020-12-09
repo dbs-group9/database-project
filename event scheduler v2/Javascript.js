@@ -24,7 +24,7 @@ function doSignUp()
 
 	document.getElementById("signUpResult").innerHTML = "";
 	var jsonPayload = '{"username" : "' + userName + '", "password" : "' + password + '"}';
-	var url = "http://eventscheduler/api/user/create.php";
+	var url = "./api/user/create.php";
 	var xhr = new XMLHttpRequest();
 	// edit path to create.php if necessary
 	xhr.open("POST", url, false);
@@ -210,7 +210,7 @@ function doLogin()
 			console.log("user is admin");
 			window.location.href = "dashboard.html";
 		}
-		
+
 		else if (usertype == "superadmin")
 			window.location.href = "superadmin.html";
 
@@ -240,7 +240,7 @@ function getRole()
 	// console.log(jsonPayload);
 	try
 	{
-		
+
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse( xhr.responseText );
 		// console.log(jsonObject);
@@ -254,7 +254,7 @@ function getRole()
 			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 			return;
 		}
-				
+
 	}
 	catch(err)
 	{
@@ -856,6 +856,7 @@ function sortByDate() {
 		}
 	});
 	if (!isFound) {
+		alert("No event found during that date");
 		showAllEvents();
 	}
 
