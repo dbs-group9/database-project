@@ -2,22 +2,22 @@
 <html>
 <head>
     <title>Create an Account</title>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="./css/signUp.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round|Calibri" rel="stylesheet">
     <script type="text/javascript" src="md5.js"></script>        <!--hash file-->
     <script type="text/javascript" src="Javascript.js"></script> <!--back end-->
 </head>
-<body style =   "background-image: url('images/login.jpg'),url('images/login.jpg');
+<body style =   "background-image: url('images/login.jpg'),url('/login.jpg');
                  background-repeat: repeat;">
 
-    <h1 id="title">Create an Account</h1>
+    <h1 id="title"style="margin-left:-48px">Create an Account</h1>
     <div id="loginDiv">
-        <span id="welcome">Welcome!</span><br>
+        <span id="welcome" style="margin-left:56px">Welcome!</span><br>
         <input type="text" id="newUserName" placeholder="Create a username" /><br />
         <input type="password" id="newPassword" placeholder="Create a password"/><br />
-        <button type="button" id="loginButton" class="buttons" onclick="doSignUp();">Create</button><br>
+        <button type="button" id="loginButton" class="buttons" style="margin-left:60px" onclick="doSignUp();">Create</button><br>
         <span id="haveAccount"><br>Already have an account?</span><br>
-        <button type="button" id="signup" class="buttons" onclick= "returnToLogin()";> Log In </button>
+        <button type="button" id="signup" class="buttons" style="margin-left:60px" onclick= "returnToLogin()";> Log In </button>
         <span id="signUpResult"></span> <!--error field-->
     </div>
 
