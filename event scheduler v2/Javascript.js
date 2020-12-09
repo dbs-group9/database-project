@@ -202,8 +202,59 @@ function doLogin()
 		sessionStorage.setItem('userId', login);
 
 		saveCookie();
-		window.location.href = "dashboard.html";
+		var usertype = "";
+		usertype = getRole();
+		console.log(usertype);
 
+		if(usertype == "admin"){
+			console.log("user is admin");
+			window.location.href = "dashboard.html";
+		}
+		
+		else if (usertype == "superadmin")
+			window.location.href = "superadmin.html";
+
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
+}
+
+function getRole()
+{
+	userId = "";
+	var login = document.getElementById("loginName").value;
+	// var hash = md5( password );
+
+	user = login;
+
+	document.getElementById("loginResult").innerHTML = "";
+
+	var jsonPayload = '{"username" : "' + login + '"}';
+	var url = "http://vh1/api/user/getRole.php"
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.withCredentials = false;
+	// console.log(jsonPayload);
+	try
+	{
+		
+		xhr.send(jsonPayload);
+		var jsonObject = JSON.parse( xhr.responseText );
+		// console.log(jsonObject);
+		userId = jsonObject.user_type;
+		// console.log(userId);
+		return userId;
+		// console.log(jsonObject['status']);
+
+		if( jsonObject['status'] != true )
+		{
+			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+			return;
+		}
+				
 	}
 	catch(err)
 	{
