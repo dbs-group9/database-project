@@ -73,7 +73,7 @@ function getAdminEvents(){
 		document.getElementById("eventResult").innerHTML = "Please enter a username.";
 		return;
 	}
-	
+
 	var jsonPayload = '{"username" : "'+ username + '"}';
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/api/event/createdByUser.php", false);
@@ -88,7 +88,7 @@ function getAdminEvents(){
 			return;
 		}
 		console.log(jsonObject);
-		
+
 		var col = ["Title", "Description", "URL", "StartDate", "EndDate", "Address", "Username", "City"];
 		var table = document.createElement("table");
 		var tableRow = table.insertRow(-1);
@@ -107,7 +107,7 @@ function getAdminEvents(){
 		}
 		document.getElementById("eventsOrganized").innerHTML = "";
 		document.getElementById("eventsOrganized").appendChild(table);
-	} 
+	}
 	catch(err){
 		document.getElementById("eventResult").innerHTML = err;
 		document.getElementById("eventResult").style = "color: red;";
@@ -122,13 +122,13 @@ function getUserEvents(){
 		document.getElementById("eventAttendance").innerHTML = "Please enter a username.";
 		return;
 	}
-	
+
 	var jsonPayload = '{"username" : "'+ username + '"}';
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/api/enrollment/userEnrollments.php", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	xhr.withCredentials = false;
-	
+
 	try{
 		xhr.send(jsonPayload);
 		var jsonObject = JSON.parse(xhr.responseText);
@@ -137,7 +137,7 @@ function getUserEvents(){
 			return;
 		}
 		console.log(jsonObject);
-		
+
 		var col = ["Username","Title"];
 		var table = document.createElement("table");
 		var tableRow = table.insertRow(-1);
@@ -782,12 +782,20 @@ function sortByDate() {
 	sDate = document.getElementById('sDate').value;
 	eDate = document.getElementById('eDate').value;
 
+	if(sDate > eDate) {
+		alert("Start date is later than End Date");
+		document.getElementById('sDate').value = "";
+		document.getElementById('eDate').value = "";
+		showAllEvents();
+		return;
+	}
+
 	var event_list = document.querySelectorAll('.event-search');
 	var isFound = 0;
 	[].slice.call(event_list).forEach(function(temp) {
 		var tempStartDate = temp.getAttribute('text');
 		var tempEndDate = temp.getAttribute('value');
-		if (tempStartDate >= sDate && tempEndDate <= eDate) {
+		if (tempStartDate >= sDate && tempEndDate <= eDate && tempEndDate >= tempStartDate) {
 			temp.parentNode.appendChild(temp);
 			isFound = 1;
 		} else {
