@@ -30,7 +30,7 @@
               <input placeholder="Start Date" type="text" id="sDate" name="sDate">
               <input placeholder="End Date" type="text" id="eDate" name="eDate">
             </div>
-            <p id="eventResult"></p>
+            <p id="eventResult" style="padding-right:264px;word-spacing: 130px;">Title StartDate  Description  URL Address City EndDate </p>
             <p id="availableEvents"></p>
 
         </div>
@@ -38,6 +38,7 @@
         <div class="bottomBox">
             <div class="leftBottom">
                 <h1>Events Attending</h1>
+                <p id="eventResult" style="padding-right:264px;word-spacing: 130px;">Title StartDate  Description  URL Address City EndDate          </p>
                 <p id="enrolled" class='tester'></p>
             </div>
         </div>
@@ -49,6 +50,7 @@
                 <button id='button4' class="btn" onclick=displayCreateForm()>
                     Create An Event
                 </button>
+                <p id="eventResult" style="word-spacing: 700px;">Title URL  </p>
                 <div id="creationArea" style="display: none;">
                     <form action="javascript:createEvent();">
                         <br>
